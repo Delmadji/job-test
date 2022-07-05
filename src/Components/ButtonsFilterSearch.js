@@ -2,20 +2,14 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 
-function ButtonsFilterSearch({
-  setButtonsSearchValue,
-  buttonsSearchValue,
-  setSearchValue,
-}) {
+function ButtonsFilterSearch({ setButtonsSearchValue, setSearchValue }) {
   const [selectedBtn, setSelectedBtn] = useState(-1);
 
   //FUNCTION
 
   //set button value
   const handleClick = (e) => {
-    console.log(e.target.value);
     setButtonsSearchValue(e.target.value);
-    console.log(buttonsSearchValue);
   };
 
   //remove button value

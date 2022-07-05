@@ -12,8 +12,6 @@ const Showinfo = ({
   clientInformation,
   handleConfirmed,
 }) => {
-  console.log(openShowinfo);
-  console.log(clientInformation.client.full_name);
   return (
     <div>
       <Dialog

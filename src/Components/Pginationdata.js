@@ -14,8 +14,6 @@ export default function Paginationdata({
       console.log(pageNumber);
       setPage(1);
     }
-    console.log(page);
-    console.log(val);
     setPage(val);
     console.log(page);
   };

@@ -45,7 +45,6 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
   };
 
   const handleConfirmed = (data) => {
-    console.log(data);
     data.last_status = "confirmed";
     setPendingDesc((pendingDesc -= 1));
     setConfirmDesc((confirmDesc += 1));
@@ -61,19 +60,15 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
     } else {
       switch (eventValue) {
         case "full_name":
-          console.log("full-name search");
           setFilterSearch(`full_name=${searchValue}`);
           break;
         case "phones":
-          console.log("phones search");
           setFilterSearch(`phone=${searchValue}`);
           break;
         case "tracking_id":
-          console.log("tracking_id", searchValue);
           setFilterSearch(`tracking_id=${searchValue}`);
           break;
         default:
-          console.log("empty");
           setFilterSearch(``);
       }
     }
@@ -81,8 +76,6 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
 
   let api;
   if (searchValue === "") {
-    console.log(count);
-    console.log(page);
     api = `https://call-center-yalitech.herokuapp.com/orders?count=${count}&page=${page}&status=confirmed&${filterSearch}`;
   } else {
     api = `https://call-center-yalitech.herokuapp.com/orders?${filterSearch}`; //when i need to search for all items
@@ -94,7 +87,6 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
     axios
       .get(api, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        console.log(res.data);
         setData(res.data.items);
         setPageNumber(res.data.pagination.pages);
       })
@@ -105,6 +97,7 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
 
   return (
     <div>
+      {/* Show client information */}
       {show ? (
         <Showinfo
           openShowinfo={openShowinfo}
@@ -144,9 +137,6 @@ function Table({ setConfirmDesc, confirmDesc, setPendingDesc, pendingDesc }) {
               setClientInformation(rowData);
               setOpenShowinfo(true);
               setShow(true);
-
-              console.log(openShowinfo);
-              console.log(show);
 
               return clientInformation;
             },

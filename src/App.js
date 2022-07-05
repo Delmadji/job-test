@@ -17,9 +17,7 @@ function App() {
     axios
       .get(api, { headers: { Authorization: `Bearer ${token}` } })
       .then((res) => {
-        console.log(res.data);
         setStatusData(res.data);
-        console.log([statusData]);
         setPendingDesc(res.data[0].pending);
         setConfirmDesc(res.data[0].confirmed);
       })
